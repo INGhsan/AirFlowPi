@@ -1,0 +1,9 @@
+# Logs and temp files
+*.log
+*.json
+
+# Docker generated Windows mount aliases
+airflow_orchestration/talend_jobs/C:/
+airflow_orchestration/talend_jobs/C/
+C/
+C:/

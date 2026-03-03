@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_TaGpIQXREfGF7d1HbQIupQ" name="Budgets_Par_Type_Act" dataPackage="_TaGpIgXREfGF7d1HbQIupQ" Server="Localhost 127.0.0.1" FilePath="C:/Projet_PI_BI/Youth Leadership &amp; Outdoor Education/Scouts/Budgets_Par_Type_Act.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="FAIT_Budget_Type" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" sheetList="FAIT_Budget_Type:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_TaGpIgXREfGF7d1HbQIupQ" name="default" dataManager="_TaGpIQXREfGF7d1HbQIupQ">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_TaGpIwXREfGF7d1HbQIupQ" id="_K2UqMAXREfGF7d1HbQIupQ" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_TaGpJAXREfGF7d1HbQIupQ" label="Type_d_Activite" length="36" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_TaGpJQXREfGF7d1HbQIupQ" label="Colonne_Saison" length="16" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_TaGpJgXREfGF7d1HbQIupQ" label="Budget_Alloue" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_TaGpJwXREfGF7d1HbQIupQ" label="Code_Saison" length="9" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

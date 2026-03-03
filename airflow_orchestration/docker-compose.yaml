@@ -1,0 +1,96 @@
+version: '3.8'
+
+x-airflow-common: &airflow-common
+  build: .
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+    JAVA_HOME: /usr/lib/jvm/default-java
+    PATH: /usr/lib/jvm/default-java/bin:/home/airflow/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./talend_jobs:/opt/airflow/talend_jobs
+    - ./lib:/opt/airflow/lib
+    - ./logs:/opt/airflow/logs
+    - C:/Projet_PI_BI:/Projet_PI_BI
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on: &airflow-common-depends-on
+    postgres:
+      condition: service_healthy
+
+services:
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "airflow" ]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+
+  # Runs ONCE as root to make all Talend .sh scripts executable
+  fix-permissions:
+    image: alpine:latest
+    user: "0:0"
+    volumes:
+      - ./talend_jobs:/opt/airflow/talend_jobs
+      - ./lib:/opt/airflow/lib
+      - ./logs:/opt/airflow/logs
+      - C:/Projet_PI_BI:/Projet_PI_BI
+    command: >
+      sh -c "chmod -R 755 /opt/airflow/talend_jobs &&
+             chmod -R 755 /opt/airflow/lib &&
+             chmod -R 777 /opt/airflow/logs &&
+             mkdir -p /opt/airflow/talend_jobs/C: &&
+             ln -sf /Projet_PI_BI /opt/airflow/talend_jobs/C:/Projet_PI_BI &&
+             mkdir -p /C: &&
+             ln -sf /Projet_PI_BI /C:/Projet_PI_BI &&
+             echo 'Permissions fixed OK'"
+
+  # Standard Airflow 2.x init: run as airflow user, command=version
+  # The native entrypoint handles DB migration + admin user creation
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: airflow
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8081:8080"
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: bash -c "socat tcp-listen:1433,reuseaddr,fork tcp:host.docker.internal:1433 & exec airflow scheduler"
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+volumes:
+  postgres-db-volume:

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="__y210A8dEfGv_9o6Y0Uuqw" name="قائمة_جهة_نابل_فوج_قرمبالية_المدينة_وحدة_الكروان" dataPackage="__y210Q8dEfGv_9o6Y0Uuqw" Server="Localhost 127.0.0.1" FilePath="C:/Projet_PI_BI/Youth Leadership &amp; Outdoor Education/Scouts/قائمة الوحدات الخاصة بالفوج20252026/قائمة جهة نابل فوج قرمبالية المدينة وحدة الياسمين.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="قائمة المشتركين" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" selectAllSheets="true" sheetList="قائمة المشتركين:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+    <sheetColumns>E</sheetColumns>
+    <sheetColumns>F</sheetColumns>
+    <sheetColumns>G</sheetColumns>
+    <sheetColumns>H</sheetColumns>
+    <sheetColumns>I</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="__y210Q8dEfGv_9o6Y0Uuqw" name="default" dataManager="__y210A8dEfGv_9o6Y0Uuqw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="__y210g8dEfGv_9o6Y0Uuqw" id="_pVkwcA8dEfGv_9o6Y0Uuqw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y210w8dEfGv_9o6Y0Uuqw" label="code_unite" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y211A8dEfGv_9o6Y0Uuqw" label="Column1" length="9" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y211Q8dEfGv_9o6Y0Uuqw" label="Column2" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y211g8dEfGv_9o6Y0Uuqw" label="Column3" length="7" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y211w8dEfGv_9o6Y0Uuqw" label="Column4" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y212A8dEfGv_9o6Y0Uuqw" label="Column5" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y212Q8dEfGv_9o6Y0Uuqw" label="Column6" length="28" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y212g8dEfGv_9o6Y0Uuqw" label="Column7" length="14" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__y212w8dEfGv_9o6Y0Uuqw" label="Column8" length="17" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

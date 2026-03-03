@@ -1,0 +1,802 @@
+[ {
+  "baseItem" : {
+    "id" : "_-vrP0A9EEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_unite",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - list_sa",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_2r9_oA9mEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_3UoIsAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_3zE7YAXTEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_3zE7YAXTEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_4DCr0A9cEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - events_prediction_dataset",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - scouts_repartition_geographique_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - sponsor_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_5EvQ4AwQEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_7o6TkAXKEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_7o6TkAXKEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_89azwA9fEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "PROJET_PI_BI:_-vrP0A9EEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_2r9_oA9mEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_4DCr0A9cEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_XDZyEA9IEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_jwZAEA9eEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_tUAHUA89EfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_8R-zgAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_JVgQUAXUEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_JVgQUAXUEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_EIh5AAwSEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_5QUYoAXXEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_5QUYoAXXEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_FwejsAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_FWzp8BQpEfGLsc9O4G1qdw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_FWzp8BQpEfGLsc9O4G1qdw - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_G5olAA__EfGRf4IDoaLWSg",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_location",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_sponsor",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_unite",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - sponsor_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_Hba9gA99EfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_location",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - events_prediction_dataset",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_K4jDIA9mEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_KGshsA9hEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_KPAIAAwSEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "__y0ZkA8dEfGv_9o6Y0Uuqw - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_OSoK8AwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_4pecEAXMEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_4pecEAXMEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_S1McUA80EfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - Activites_Generales_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - camp_detail_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_SKCW0AwQEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - Scout_Evolution_Saison_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_UB7QEAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_TaGpIAXREfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_TaGpIAXREfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_Uk3voAwSEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "PROJET_PI_BI:_3UoIsAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_5EvQ4AwQEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_8R-zgAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_EIh5AAwSEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_FwejsAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_KPAIAAwSEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_OSoK8AwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_UB7QEAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:__A000AwQEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_aFDQIAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_gVBZYAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_k0ZuwAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_pnY8oAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_t8swAAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_yE7JoAwREfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_WLlj4AwUEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - sponsor_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_XDZyEA9IEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - Scout_Evolution_Saison_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_YJi54BA8EfGRf4IDoaLWSg",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_type_act_cam",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_unite",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - activites_scouts_tunisie_2025_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "__A000AwQEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_PzB44AaOEfGHyqWyo0DSjw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_PzB44AaOEfGHyqWyo0DSjw - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_aFDQIAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_pIExcAXREfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_pIExcAXREfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_br_hEA84EfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "PROJET_PI_BI:_K4jDIA9mEfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_S1McUA80EfGv_9o6Y0Uuqw",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_SKCW0AwQEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_WLlj4AwUEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_c3nugAxKEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  }, {
+    "id" : "PROJET_PI_BI:_xc3lIAxTEfGbOtb91OpL1w",
+    "version" : "Latest",
+    "type" : "job"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_c3nugAxKEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - events_prediction_dataset",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - scouts_repartition_geographique_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - sponsor_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_gVBZYAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_AlQNkAXSEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_AlQNkAXSEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_jwZAEA9eEfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - Activites_Generales_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - camp_detail_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_k0ZuwAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_E5JWUBAzEfGRf4IDoaLWSg",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_E5JWUBAzEfGRf4IDoaLWSg - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_pnY8oAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_kfJCAAXSEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_kfJCAAXSEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_rns4gBA4EfGRf4IDoaLWSg",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_date",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_type_act_cam",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - D_tails_des_Co_ts_de_Camp_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - camp_detail_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_t8swAAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_ztEkwAXSEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_ztEkwAXSEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_tUAHUA89EfGv_9o6Y0Uuqw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_sponsor",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - sponsor_SA",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_xc3lIAxTEfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_Um-AoAt-EfGHAIP3e21FFw - dim_unite",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ - list_sa",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_yE7JoAwREfGbOtb91OpL1w",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_C9fa0AXTEfGF7d1HbQIupQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_trRpEPfqEfCXTvyopP9OVQ",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_C9fa0AXTEfGF7d1HbQIupQ - metadata",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+} ]

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_FWzp8RQpEfGLsc9O4G1qdw" name="activites_scouts_tunisie_2025" dataPackage="_FWzp8hQpEfGLsc9O4G1qdw" Server="Localhost 127.0.0.1" FilePath="C:/Projet_PI_BI/Youth Leadership &amp; Outdoor Education/Scouts/activites_scouts_tunisie_2025.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="Sheet1" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" selectAllSheets="true" sheetList="Sheet1:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+    <sheetColumns>E</sheetColumns>
+    <sheetColumns>F</sheetColumns>
+    <sheetColumns>G</sheetColumns>
+    <sheetColumns>H</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_FWzp8hQpEfGLsc9O4G1qdw" name="default" dataManager="_FWzp8RQpEfGLsc9O4G1qdw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_FWzp8xQpEfGLsc9O4G1qdw" id="_AX_mkBQpEfGLsc9O4G1qdw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp9BQpEfGLsc9O4G1qdw" label="Code_unite" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp9RQpEfGLsc9O4G1qdw" label="unite" length="9" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp9hQpEfGLsc9O4G1qdw" label="Code_type" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp9xQpEfGLsc9O4G1qdw" label="Type" length="36" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp-BQpEfGLsc9O4G1qdw" label="Activite" length="42" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp-RQpEfGLsc9O4G1qdw" label="Nb_Activites" length="2" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp-hQpEfGLsc9O4G1qdw" label="Nb_Participants" length="3" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FWzp-xQpEfGLsc9O4G1qdw" label="date_code" length="10" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
