@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Group DSS – ML Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --green-dark:   #1e4d2b;
+      --green-mid:    #2d6a3f;
+      --green-light:  #3d8b50;
+      --gold:         #b5860d;
+      --gold-light:   #d4a017;
+      --gold-card:    #7a5010;
+      --beige:        #f5f0e6;
+      --beige2:       #eae3d0;
+      --beige3:       #ddd3b8;
+      --cream:        #faf7f0;
+      --red:          #c0392b;
+      --red-light:    #e74c3c;
+      --amber:        #d4730a;
+      --text-dark:    #1a1a1a;
+      --text-mid:     #4a4a4a;
+      --text-light:   #777;
+      --white:        #ffffff;
+      --border:       #c8b98a;
+      --sidebar-w:    270px;
+      --header-h:     58px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--beige);
+      color: var(--text-dark);
+      display: flex; flex-direction: column; height: 100vh; overflow: hidden;
+    }
+
+    /* ── TOP HEADER ───────────────────────────────────────── */
+    .topheader {
+      height: var(--header-h); background: var(--green-dark);
+      display: flex; align-items: center; padding: 0 22px; gap: 14px;
+      flex-shrink: 0; border-bottom: 3px solid var(--gold);
+    }
+    .logo-badge {
+      width: 38px; height: 38px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .site-title { color: var(--white); font-size: 16px; font-weight: 700; flex: 1; letter-spacing: .3px; }
+    .site-subtitle { font-size: 10px; color: rgba(255,255,255,.6); font-weight: 400; }
+    .data-pill {
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px; padding: 5px 12px; color: var(--white); font-size: 11px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .data-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: #aaa; }
+    .data-pill.dw   .dot { background: #4cff82; }
+    .data-pill.excel .dot { background: var(--gold-light); }
+
+    /* ── BODY LAYOUT ────────────────────────────────────────── */
+    .layout { display: flex; flex: 1; overflow: hidden; }
+
+    /* ── SIDEBAR ─────────────────────────────────────────────── */
+    .sidebar {
+      width: var(--sidebar-w); background: var(--green-dark);
+      border-right: 2px solid var(--gold); display: flex; flex-direction: column;
+      flex-shrink: 0; overflow-y: auto;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    .section-label {
+      padding: 14px 16px 5px; font-size: 9px; font-weight: 700; color: var(--gold-light);
+      letter-spacing: 1.2px; text-transform: uppercase; border-top: 1px solid rgba(181,134,13,.2);
+      margin-top: 6px;
+    }
+    .section-label:first-child { border-top: none; margin-top: 0; }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+      cursor: pointer; color: rgba(255,255,255,.7); font-size: 12px;
+      border-left: 3px solid transparent; transition: all .15s;
+    }
+    .nav-item:hover { background: rgba(255,255,255,.1); color: var(--white); border-left-color: var(--gold-light); }
+    .nav-item.active { background: rgba(255,255,255,.12); color: var(--white); border-left-color: var(--gold); font-weight: 600; }
+    .nav-item .icon { width: 22px; text-align: center; font-size: 13px; flex-shrink: 0; }
+    .nav-badge {
+      margin-left: auto; font-size: 9px; padding: 2px 6px; border-radius: 8px;
+      background: rgba(181,134,13,.3); color: var(--gold-light); border: 1px solid rgba(181,134,13,.4);
+      font-weight: 600; letter-spacing: .5px;
+    }
+
+    /* ── MAIN AREA ───────────────────────────────────────────── */
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--beige); }
+
+    .sub-topbar {
+      background: var(--beige2); border-bottom: 1px solid var(--border);
+      padding: 10px 22px; display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    }
+    .sub-topbar h2 { font-size: 15px; font-weight: 700; color: var(--green-dark); flex: 1; }
+    .btn-scout {
+      background: var(--green-dark); color: var(--white); border: none;
+      padding: 7px 14px; border-radius: 6px; font-size: 12px; cursor: pointer;
+      font-weight: 500; transition: background .15s; display: flex; align-items: center; gap: 6px;
+    }
+    .btn-scout:hover { background: var(--green-mid); }
+    .btn-gold {
+      background: var(--gold); color: var(--white); border: none;
+      padding: 7px 14px; border-radius: 6px; font-size: 12px; cursor: pointer;
+      font-weight: 600; transition: background .15s;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    .content { flex: 1; overflow-y: auto; padding: 18px 22px 24px; }
+    .content::-webkit-scrollbar { width: 6px; }
+    .content::-webkit-scrollbar-thumb { background: var(--beige3); border-radius: 3px; }
+
+    /* ── KPI CARDS (gold style like Power BI) ─────────────────── */
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+    .kpi-card {
+      border-radius: 8px; padding: 14px 16px; color: var(--white);
+      position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .kpi-card.green  { background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); }
+    .kpi-card.gold   { background: linear-gradient(135deg, var(--gold-card), var(--gold)); }
+    .kpi-card.red    { background: linear-gradient(135deg, #8b1a15, var(--red-light)); }
+    .kpi-card.amber  { background: linear-gradient(135deg, #7a4000, var(--amber)); }
+    .kpi-label { font-size: 10px; color: rgba(255,255,255,.75); margin-bottom: 5px; letter-spacing: .5px; }
+    .kpi-value { font-size: 26px; font-weight: 800; line-height: 1; }
+    .kpi-sub   { font-size: 10px; color: rgba(255,255,255,.6); margin-top: 4px; }
+    .kpi-icon  { position: absolute; right: 12px; top: 12px; font-size: 20px; opacity: .25; }
+
+    /* ── ALERT BANNER (red strip like Power BI) ──────────────── */
+    .alert-banner {
+      background: var(--red); color: var(--white); border-radius: 8px;
+      padding: 11px 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 500;
+    }
+    .alert-banner.amber-b { background: #d65f00; }
+    .alert-banner .a-icon { font-size: 16px; flex-shrink: 0; }
+    .alert-banner .a-msg  { flex: 1; }
+    .alert-banner .a-count { background: rgba(255,255,255,.25); border-radius: 12px; padding: 2px 10px; font-size: 11px; font-weight: 700; }
+
+    /* ── CARD ─────────────────────────────────────────────────── */
+    .card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,.06);
+    }
+    .card-header {
+      padding: 12px 18px; background: var(--green-dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-header.gold-h { background: linear-gradient(135deg, var(--gold-card), var(--gold)); }
+    .card-header.red-h  { background: linear-gradient(135deg, #8b1a15, var(--red)); }
+    .card-header.beige-h { background: var(--beige2); }
+    .card-title    { font-size: 13px; font-weight: 700; color: var(--white); }
+    .card-subtitle { font-size: 10px; color: rgba(255,255,255,.65); }
+    .card-header.beige-h .card-title    { color: var(--green-dark); }
+    .card-header.beige-h .card-subtitle { color: var(--text-mid); }
+    .card-body { padding: 16px 18px; }
+
+    /* ── TABLES ───────────────────────────────────────────────── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .data-table th {
+      background: var(--green-dark); color: var(--white);
+      padding: 9px 12px; font-weight: 600; font-size: 11px; text-align: left;
+    }
+    .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--beige3); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--beige); }
+    .data-table tr:nth-child(even) td { background: var(--cream); }
+    .data-table tr:nth-child(even):hover td { background: var(--beige); }
+
+    /* ── BADGES ───────────────────────────────────────────────── */
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; }
+    .badge.good  { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .badge.warn  { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+    .badge.bad   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .badge.high  { background: var(--green-dark); color: var(--white); }
+    .badge.medium { background: var(--gold);      color: var(--white); }
+    .badge.low    { background: var(--red);        color: var(--white); }
+
+    /* ── METRIC ROW ───────────────────────────────────────────── */
+    .metric-row { display: flex; gap: 12px; margin-bottom: 14px; }
+    .metric {
+      background: var(--green-dark); color: var(--white); border-radius: 8px;
+      padding: 12px 16px; flex: 1; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    .metric.gold-m { background: linear-gradient(135deg, var(--gold-card), var(--gold)); }
+    .metric.red-m  { background: linear-gradient(135deg, #8b1a15, var(--red-light)); }
+    .metric-val { font-size: 22px; font-weight: 800; }
+    .metric-lbl { font-size: 10px; color: rgba(255,255,255,.7); margin-top: 3px; }
+
+    /* ── FORM ────────────────────────────────────────────────── */
+    .form-row { display: flex; gap: 12px; margin-bottom: 14px; }
+    .form-group { flex: 1; }
+    .form-group label  { font-size: 11px; color: var(--text-mid); display: block; margin-bottom: 5px; font-weight: 600; }
+    .form-group input  {
+      width: 100%; background: var(--cream); border: 1.5px solid var(--border);
+      color: var(--text-dark); border-radius: 6px; padding: 8px 12px; font-size: 13px;
+    }
+    .form-group input:focus { outline: none; border-color: var(--green-mid); box-shadow: 0 0 0 2px rgba(45,106,63,.15); }
+
+    /* ── PROGRESS / BARS ─────────────────────────────────────── */
+    .progress-wrap { background: var(--beige3); border-radius: 10px; height: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 10px; transition: width .6s ease; }
+    .pf-green  { background: var(--green-mid); }
+    .pf-gold   { background: var(--gold); }
+    .pf-red    { background: var(--red-light); }
+
+    /* ── ALERT ITEM ──────────────────────────────────────────── */
+    .alert-entry {
+      padding: 11px 14px; border-radius: 7px; margin-bottom: 8px;
+      border-left: 4px solid; display: flex; align-items: flex-start; gap: 10px;
+      font-size: 12px; background: var(--cream);
+    }
+    .alert-entry.high   { border-color: var(--red);       background: #fdf0f0; }
+    .alert-entry.medium { border-color: var(--gold);      background: #fdf8e8; }
+    .alert-entry.ok     { border-color: var(--green-mid); background: #f0fdf4; }
+    .alert-entry .ae-icon { font-size: 15px; margin-top: 1px; flex-shrink: 0; }
+    .ae-txt b { font-size: 13px; }
+
+    /* ── RECOMMENDATION ──────────────────────────────────────── */
+    .recommendation {
+      padding: 14px 18px; border-radius: 8px; margin-top: 14px;
+      font-size: 14px; font-weight: 600; text-align: center;
+      border: 2px solid;
+    }
+    .rec-green  { background: #eafaf1; border-color: var(--green-mid); color: var(--green-dark); }
+    .rec-red    { background: #fdf0f0; border-color: var(--red);       color: var(--red); }
+    .rec-orange { background: #fdf6ec; border-color: var(--amber);     color: var(--amber); }
+    .rec-blue   { background: #eef4ff; border-color: #2e6da4;          color: #2e6da4; }
+
+    /* ── SCENARIO SLIDER ─────────────────────────────────────── */
+    .slider-wrap { margin: 14px 0; }
+    .slider-wrap input[type=range] { width: 100%; accent-color: var(--green-dark); cursor: pointer; height: 5px; }
+    .slider-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+    /* ── CLUSTER DOT ─────────────────────────────────────────── */
+    .cluster-card {
+      background: var(--cream); border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 16px; margin-bottom: 10px;
+    }
+    .cluster-card h4 { font-size: 13px; margin-bottom: 8px; }
+
+    /* ── LOADING ─────────────────────────────────────────────── */
+    .loading { text-align: center; padding: 50px 20px; color: var(--text-light); }
+    .spinner {
+      width: 36px; height: 36px; border: 4px solid var(--beige3);
+      border-top-color: var(--green-dark); border-radius: 50%;
+      animation: spin .8s linear infinite; margin: 0 auto 14px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── TABS ────────────────────────────────────────────────── */
+    .tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 14px; }
+    .tab {
+      padding: 8px 18px; cursor: pointer; font-size: 12px; font-weight: 500;
+      color: var(--text-light); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .15s;
+    }
+    .tab:hover { color: var(--green-dark); }
+    .tab.active { color: var(--green-dark); border-bottom-color: var(--green-dark); font-weight: 700; }
+
+    /* ── SCENARIO RESULT ─────────────────────────────────────── */
+    .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+    .scenario-box {
+      padding: 14px 16px; border-radius: 8px; text-align: center; color: var(--white);
+    }
+    .scenario-box .sv { font-size: 20px; font-weight: 800; }
+    .scenario-box .sl { font-size: 10px; opacity: .8; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ TOP HEADER ══════════════════════════ -->
+<header class="topheader">
+  <div class="logo-badge">⚜️</div>
+  <div style="flex:1">
+    <div class="site-title">Scout Group DSS – ML Intelligence Hub</div>
+    <div class="site-subtitle">نظام دعم القرار للكشافة التونسية</div>
+  </div>
+  <div class="data-pill" id="dataBadge">
+    <div class="dot"></div>
+    <span id="dataBadgeLabel">Checking data source…</span>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- ══════════════════════ SIDEBAR ════════════════════════════ -->
+<aside class="sidebar">
+  <div class="section-label">📊 Predictive Analytics</div>
+  <div class="nav-item active" onclick="loadObj(1,this)">
+    <span class="icon"><i class="fa fa-users"></i></span> Membership Forecasting
+    <span class="nav-badge">REG</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(2,this)">
+    <span class="icon"><i class="fa fa-chart-line"></i></span> Participation Prediction
+    <span class="nav-badge">REG</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(3,this)">
+    <span class="icon"><i class="fa fa-coins"></i></span> Budget Estimation
+    <span class="nav-badge">REG</span>
+  </div>
+
+  <div class="section-label">🔴 Classification & Risk</div>
+  <div class="nav-item" onclick="loadObj(4,this)">
+    <span class="icon"><i class="fa fa-triangle-exclamation"></i></span> Anomaly Detection
+    <span class="nav-badge">ISO</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(5,this)">
+    <span class="icon"><i class="fa fa-medal"></i></span> Unit Performance
+    <span class="nav-badge">CLF</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(6,this)">
+    <span class="icon"><i class="fa fa-circle-exclamation"></i></span> At-Risk Units
+    <span class="nav-badge">CLF</span>
+  </div>
+
+  <div class="section-label">💡 Segmentation & Scoring</div>
+  <div class="nav-item" onclick="loadObj(7,this)">
+    <span class="icon"><i class="fa fa-object-group"></i></span> Behavioral Segmentation
+    <span class="nav-badge">KMN</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(8,this)">
+    <span class="icon"><i class="fa fa-star"></i></span> Engagement Scoring
+    <span class="nav-badge">SCR</span>
+  </div>
+
+  <div class="section-label">🌤 Weather & Adaptation</div>
+  <div class="nav-item" onclick="loadObj(9,this)">
+    <span class="icon"><i class="fa fa-cloud-sun"></i></span> Weather Model
+    <span class="nav-badge">CLF</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(10,this)">
+    <span class="icon"><i class="fa fa-rotate-right"></i></span> Activity Adaptation
+    <span class="nav-badge">SIM</span>
+  </div>
+
+  <div class="section-label">🔔 Alerts & Decision Support</div>
+  <div class="nav-item" onclick="loadObj(11,this)">
+    <span class="icon"><i class="fa fa-bell"></i></span> Early Warning System
+    <span class="nav-badge">RUL</span>
+  </div>
+  <div class="nav-item" onclick="loadObj(12,this)">
+    <span class="icon"><i class="fa fa-sliders"></i></span> Scenario Analysis
+    <span class="nav-badge">SIM</span>
+  </div>
+</aside>
+
+<!-- ══════════════════════ MAIN ════════════════════════════════ -->
+<div class="main">
+  <!-- Sub-topbar -->
+  <div class="sub-topbar">
+    <h2 id="pageTitle">🧑‍🤝‍🧑 Membership Forecasting</h2>
+    <button class="btn-scout" onclick="loadObj(currentObj, document.getElementById('nav'+currentObj))">
+      <i class="fa fa-rotate-right"></i> Refresh
+    </button>
+  </div>
+
+  <!-- KPI Cards Row -->
+  <div style="padding:14px 22px 0">
+    <div class="kpi-row">
+      <div class="kpi-card green">
+        <div class="kpi-label">Data Source</div>
+        <div class="kpi-value" id="kpiSource">…</div>
+        <div class="kpi-sub">Active connection</div>
+        <div class="kpi-icon"><i class="fa fa-database"></i></div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">ML Models</div>
+        <div class="kpi-value">12</div>
+        <div class="kpi-sub">Trained on startup</div>
+        <div class="kpi-icon"><i class="fa fa-brain"></i></div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">DFS Objectives</div>
+        <div class="kpi-value">13</div>
+        <div class="kpi-sub">Per specification</div>
+        <div class="kpi-icon"><i class="fa fa-list-check"></i></div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">Current Objective</div>
+        <div class="kpi-value" id="kpiCurrent">1</div>
+        <div class="kpi-sub">Selected</div>
+        <div class="kpi-icon"><i class="fa fa-bullseye"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content area -->
+  <div class="content" id="mainContent">
+    <div class="loading"><div class="spinner"></div>Loading objective...</div>
+  </div>
+</div><!-- end main -->
+
+</div><!-- end layout -->
+
+<script>
+let currentObj = 1;
+const objTitles = {
+  1:'🧑‍🤝‍🧑 Membership Forecasting', 2:'📈 Participation Rate Prediction',
+  3:'💰 Budget Estimation', 4:'⚠️ Financial Anomaly Detection',
+  5:'🏅 Unit Performance Classification', 6:'🔴 At-Risk Units Identification',
+  7:'🔵 Behavioral Segmentation', 8:'⭐ Engagement Scoring',
+  9:'🌤 Weather-Aware Predictive Model', 10:'🔄 Activity Adaptation',
+  11:'🔔 Early Warning System', 12:'📊 Scenario Analysis'
+};
+
+// ── Utilities ────────────────────────────────────────────────
+function currency(v){ return Number(v).toLocaleString('fr-TN') + ' TND'; }
+function pct(v){ return (v*100).toFixed(1)+'%'; }
+function setActive(el){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+}
+function loading(){
+  document.getElementById('mainContent').innerHTML =
+    '<div class="loading"><div class="spinner"></div>Running ML model…</div>';
+}
+function renderTable(headers, rows, rowFn){
+  const ths = headers.map(h=>`<th>${h}</th>`).join('');
+  const trs = rows.map(r=>`<tr>${rowFn(r)}</tr>`).join('');
+  return `<table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+}
+
+// ── Status check ─────────────────────────────────────────────
+async function checkStatus(){
+  try{
+    const d = await (await fetch('/api/status')).json();
+    const badge = document.getElementById('dataBadge');
+    const label = document.getElementById('dataBadgeLabel');
+    const kpi   = document.getElementById('kpiSource');
+    if(d.data_source==='DW'){
+      badge.classList.add('dw');   label.textContent='🗄 scout_DW Connected'; kpi.textContent='DW';
+    } else {
+      badge.classList.add('excel'); label.textContent='📊 Excel Fallback'; kpi.textContent='Excel';
+    }
+  } catch{}
+}
+
+// ── Main loader ───────────────────────────────────────────────
+async function loadObj(n, navEl){
+  currentObj = n; setActive(navEl); loading();
+  document.getElementById('pageTitle').textContent = objTitles[n]||'';
+  document.getElementById('kpiCurrent').textContent = n;
+  const d  = await (await fetch(`/api/obj/${n}`)).json();
+  const el = document.getElementById('mainContent');
+
+  if(n===1){
+    el.innerHTML = `
+      <div class="metric-row">
+        <div class="metric"><div class="metric-val">${d.rmse.toFixed(2)}</div><div class="metric-lbl">RMSE (members)</div></div>
+        <div class="metric gold-m"><div class="metric-val">RF</div><div class="metric-lbl">Random Forest Regressor</div></div>
+        <div class="metric"><div class="metric-val">100</div><div class="metric-lbl">Estimators</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📋 Per-Unit Membership Forecast</div><div class="card-subtitle">Model: ${d.model}</div></div>
+        <div class="card-body">${renderTable(['Unit Code','Current Members','Predicted Next Season'], d.sample,
+          s=>`<td><b>${s.unit}</b></td><td>${s.current.toFixed(0)}</td><td><b style="color:var(--green-mid)">${s.predicted.toFixed(0)}</b></td>`)}</div>
+      </div>`;
+  }
+  else if(n===2){
+    el.innerHTML = `
+      <div class="metric-row">
+        <div class="metric"><div class="metric-val">${d.rmse.toFixed(4)}</div><div class="metric-lbl">RMSE</div></div>
+        <div class="metric gold-m"><div class="metric-val">${(d.rmse*100).toFixed(1)}%</div><div class="metric-lbl">Avg Error Rate</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📈 Participation Prediction</div><div class="card-subtitle">Actual vs Predicted Participation</div></div>
+        <div class="card-body">
+          <div style="background:var(--cream);padding:15px;border-radius:8px;border:1px solid var(--beige3);margin-bottom:15px">
+            <canvas id="objChart" style="max-height:300px"></canvas>
+          </div>
+        </div>
+      </div>`;
+      setTimeout(() => {
+        const labels = d.sample.map(s => s.unit);
+        const actual = d.sample.map(s => s.actual * 100);
+        const predicted = d.sample.map(s => s.predicted * 100);
+        renderChart('bar', labels, [
+          { label: 'Actual (%)', data: actual, backgroundColor: '#1e4d2b' },
+          { label: 'Predicted (%)', data: predicted, backgroundColor: '#b5860d' }
+        ]);
+      }, 100);
+  }
+  else if(n===3){
+    el.innerHTML = `
+      <div class="metric-row">
+        <div class="metric"><div class="metric-val">${d.rmse.toFixed(0)}</div><div class="metric-lbl">RMSE (TND)</div></div>
+        <div class="metric gold-m"><div class="metric-val">RF</div><div class="metric-lbl">Budget Estimator</div></div>
+      </div>
+      <div class="card"><div class="card-header gold-h"><div class="card-title">💰 Budget Forecast Per Unit</div><div class="card-subtitle">Allocated vs Predicted vs Consumed</div></div>
+      <div class="card-body">${renderTable(['Unit','Allocated','Predicted','Consumed'], d.sample,
+        s=>`<td><b>${s.unit}</b></td><td>${currency(s.allocated)}</td><td><b style="color:var(--green-dark)">${currency(s.predicted)}</b></td><td>${currency(s.consumed)}</td>`)}</div></div>`;
+  }
+  else if(n===4){
+    el.innerHTML = `
+      ${d.n_anomalies>0 ? `<div class="alert-banner"><span class="a-icon">⚠️</span><span class="a-msg">Financial anomalies detected requiring investigation</span><span class="a-count">${d.n_anomalies} records</span></div>` : ''}
+      <div class="metric-row">
+        <div class="metric red-m"><div class="metric-val">${d.n_anomalies}</div><div class="metric-lbl">Anomalies Detected</div></div>
+        <div class="metric gold-m"><div class="metric-val">5%</div><div class="metric-lbl">Contamination Rate</div></div>
+      </div>
+      <div class="card"><div class="card-header red-h"><div class="card-title">🚨 Abnormal Budget Consumption</div><div class="card-subtitle">Isolation Forest – Anomaly Detection</div></div>
+      <div class="card-body">${d.anomalies.length ?
+        renderTable(['Unit','Allocated','Consumed','Ratio','Status'], d.anomalies,
+          a=>`<td><b>${a.unit}</b></td><td>${currency(a.allocated)}</td><td>${currency(a.consumed)}</td><td>${a.ratio.toFixed(2)}x</td><td><span class="badge bad">⚠ Abnormal</span></td>`)
+        : '<div class="alert-entry ok"><span class="ae-icon">✅</span><div class="ae-txt"><b>No anomalies detected.</b></div></div>'}</div></div>`;
+  }
+  else if(n===5){
+    const dist = d.distribution||{};
+    const total = Object.values(dist).reduce((a,b)=>a+b,0)||1;
+    el.innerHTML = `
+      <div class="metric-row">
+        <div class="metric"><div class="metric-val">${(d.accuracy*100).toFixed(1)}%</div><div class="metric-lbl">Classification Accuracy</div></div>
+        <div class="metric gold-m"><div class="metric-val">${total}</div><div class="metric-lbl">Total Unit Records</div></div>
+      </div>
+      <div class="card"><div class="card-header"><div class="card-title">🏅 Performance Distribution</div><div class="card-subtitle">Units classified as Low / Medium / High</div></div>
+      <div class="card-body">
+        ${Object.entries(dist).map(([k,v])=>`
+          <div style="margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span class="badge ${k.toLowerCase()}">${k}</span>
+              <span style="font-size:12px;color:var(--text-mid)">${v} units (${(v/total*100).toFixed(0)}%)</span>
+            </div>
+            <div class="progress-wrap"><div class="progress-fill ${k==='High'?'pf-green':k==='Medium'?'pf-gold':'pf-red'}" style="width:${v/Math.max(...Object.values(dist))*100}%"></div></div>
+          </div>`).join('')}
+      </div></div>`;
+  }
+  else if(n===6){
+    el.innerHTML = `
+      ${d.n_at_risk>0 ? `<div class="alert-banner"><span class="a-icon">🔴</span><span class="a-msg">At-risk units detected – intervention recommended</span><span class="a-count">${d.n_at_risk} units</span></div>` : ''}
+      <div class="metric-row">
+        <div class="metric red-m"><div class="metric-val">${d.n_at_risk}</div><div class="metric-lbl">At-Risk Units</div></div>
+      </div>
+      <div class="card"><div class="card-header red-h"><div class="card-title">🔴 Units Requiring Intervention</div><div class="card-subtitle">Random Forest Classifier – At-Risk Detection</div></div>
+      <div class="card-body">${d.at_risk_units.length ?
+        renderTable(['Unit','Members','Participation','Class'], d.at_risk_units,
+          u=>`<td><b>${u.unit}</b></td><td>${u.members.toFixed(0)}</td><td>${pct(u.participation)}</td><td><span class="badge low">${u.class}</span></td>`)
+        : '<div class="alert-entry ok"><span class="ae-icon">✅</span><div>No at-risk units found.</div></div>'}</div></div>`;
+  }
+  else if(n===7){
+    const colors = ['var(--green-dark)','var(--gold)','var(--red-light)'];
+    el.innerHTML = `
+      <div class="card"><div class="card-header"><div class="card-title">🔵 Behavioral Clusters (K-Means, K=3)</div></div>
+      <div class="card-body">
+        ${(d.clusters||[]).map((c,i)=>`
+          <div class="cluster-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="color:${colors[i]}"><i class="fa fa-circle" style="font-size:10px;margin-right:6px"></i>${c.label}</h4>
+              <span style="font-size:12px;color:var(--text-mid)">${c.count} unit records</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12.5px">
+              <div><span style="color:var(--text-light)">Avg Members:</span> <b>${c.avg_members.toFixed(1)}</b></div>
+              <div><span style="color:var(--text-light)">Avg Participation:</span> <b>${pct(c.avg_participation)}</b></div>
+            </div>
+            <div style="margin-top:10px">
+              <div class="progress-wrap"><div class="progress-fill ${i===0?'pf-green':i===1?'pf-gold':'pf-red'}" style="width:${c.count/(d.clusters.reduce((a,x)=>a+x.count,0))*100}%"></div></div>
+            </div>
+          </div>`).join('')}
+      </div></div>`;
+  }
+  else if(n===8){
+    el.innerHTML = `
+      <div class="card"><div class="card-header gold-h"><div class="card-title">⭐ Engagement Score per Unit</div><div class="card-subtitle">Composite formula: (Participation×60) + (Members/Leaders×2)</div></div>
+      <div class="card-body">${renderTable(['Unit','Score','Level','Progress'], d.scores,
+        s=>`<td><b>${s.unit}</b></td><td><b>${s.score.toFixed(1)}</b></td>
+              <td><span class="badge ${s.level.toLowerCase()}">${s.level}</span></td>
+              <td><div class="progress-wrap"><div class="progress-fill ${s.score>65?'pf-green':s.score>40?'pf-gold':'pf-red'}" style="width:${s.score}%;min-width:4px"></div></div></td>`)}</div></div>`;
+  }
+  else if(n===9){
+    el.innerHTML = `
+      <div class="metric-row">
+        <div class="metric"><div class="metric-val">${(d.accuracy*100).toFixed(1)}%</div><div class="metric-lbl">Test Accuracy</div></div>
+        <div class="metric gold-m"><div class="metric-val">RF</div><div class="metric-lbl">Classifier</div></div>
+        <div class="metric"><div class="metric-val">Go/No</div><div class="metric-lbl">Binary Prediction</div></div>
+      </div>
+      <div class="card"><div class="card-header"><div class="card-title">🌤 Weather Impact Classification</div><div class="card-subtitle">${d.description}</div></div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
+          <div class="cluster-card"><b style="color:var(--green-dark)">✅ GO Conditions</b><br><br>
+            <div style="font-size:12px;line-height:1.8">Temp ≤ 35°C<br>Rain ≤ 5 mm<br>Wind ≤ 30 km/h</div></div>
+          <div class="cluster-card"><b style="color:var(--red)">⛔ NO-GO Conditions</b><br><br>
+            <div style="font-size:12px;line-height:1.8">Temp &gt; 40°C (heat risk)<br>Rain &gt; 10 mm (flooding)<br>Wind &gt; 40 km/h (storm)</div></div>
+        </div>
+      </div></div>`;
+  }
+  else if(n===10){
+    el.innerHTML = `
+      <div class="card"><div class="card-header gold-h"><div class="card-title">🔄 Weather Scenario Simulator</div><div class="card-subtitle">Enter conditions to receive an activity recommendation</div></div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group"><label>🌡 Max Temperature (°C)</label><input type="number" id="sim_temp" value="28" min="0" max="55"/></div>
+          <div class="form-group"><label>🌧 Rainfall (mm)</label><input type="number" id="sim_rain" value="0" min="0" max="200"/></div>
+          <div class="form-group"><label>💨 Max Wind Speed (km/h)</label><input type="number" id="sim_wind" value="10" min="0" max="150"/></div>
+        </div>
+        <button class="btn-gold" onclick="simulateWeather()"><i class="fa fa-play"></i> Run Simulation</button>
+        <div id="sim_result" style="margin-top:14px"></div>
+      </div></div>`;
+  }
+  else if(n===11){
+    el.innerHTML = `
+      ${d.alert_count>0 ? `<div class="alert-banner"><span class="a-icon">🔔</span><span class="a-msg">Early warnings detected for scout units</span><span class="a-count">${d.alert_count} units</span></div>` : ''}
+      <div class="card"><div class="card-header red-h"><div class="card-title">🔔 Alert Feed</div><div class="card-subtitle">Proactive risk notifications per unit</div></div>
+      <div class="card-body">
+        ${d.alerts.length===0 ? '<div class="alert-entry ok"><span class="ae-icon">✅</span><div class="ae-txt"><b>All units operating normally.</b></div></div>' :
+          d.alerts.map(a=>`
+            <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--beige3)">
+              <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:8px">
+                <i class="fa fa-tent"></i> Unit: ${a.unit}
+              </div>
+              ${a.alerts.map(al=>`
+                <div class="alert-entry ${al.severity}">
+                  <span class="ae-icon">${al.severity==='high'?'🔴':'🟠'}</span>
+                  <div class="ae-txt"><b>${al.type}</b> – ${al.message}</div>
+                </div>`).join('')}
+            </div>`).join('')}
+      </div></div>`;
+  }
+  else if(n===12){
+    el.innerHTML = `
+      <div class="card"><div class="card-header gold-h"><div class="card-title">📊 Budget Scenario Simulator</div><div class="card-subtitle">Simulate the financial impact of budget changes</div></div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--text-mid);margin-bottom:12px">${d.interpretation}</p>
+        <div style="background:var(--cream);padding:15px;border-radius:8px;border:1px solid var(--beige3);margin-bottom:15px">
+          <canvas id="objChart" style="max-height:300px"></canvas>
+        </div>
+        <div class="slider-wrap">
+          <label style="font-size:12px;color:var(--text-mid);font-weight:600">Budget Change: <b id="pctLabel" style="color:var(--green-dark)">+10%</b></label>
+          <input type="range" id="pctSlider" min="-30" max="50" value="10" step="5" oninput="updateSlider(this.value)"/>
+          <div class="slider-label"><span>−30%</span><span style="color:var(--green-dark);font-weight:600">0%</span><span>+50%</span></div>
+        </div>
+        <button class="btn-scout" onclick="runScenario()"><i class="fa fa-calculator"></i> Calculate Scenario</button>
+        <div id="scenario_result" style="margin-top:18px"></div>
+      </div></div>`;
+    runScenario();
+  }
+}
+
+let currentChart = null;
+function renderChart(type, labels, datasets) {
+  const ctx = document.getElementById('objChart');
+  if(!ctx) return;
+  if(currentChart) currentChart.destroy();
+  currentChart = new Chart(ctx, {
+    type: type,
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: true, labels: { font: { size: 10 } } } },
+      scales: { 
+        y: { beginAtZero: true, grid: { color: '#eee' }, ticks: { font: { size: 10 } } },
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+function updateSlider(v){
+  document.getElementById('pctLabel').textContent = (v>=0?'+':'')+v+'%';
+}
+
+async function runScenario(){
+  const pct = parseInt(document.getElementById('pctSlider')?.value||10);
+  const d = await (await fetch('/api/obj/12',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({increase_pct:pct})})).json();
+  const surplusPos = d.surplus >= 0;
+  document.getElementById('scenario_result').innerHTML = `
+    <div class="scenario-grid">
+      <div class="scenario-box" style="background:var(--green-dark)">
+        <div class="sv">${Number(d.base_budget).toLocaleString()}</div><div class="sl">Base Budget (TND)</div>
+      </div>
+      <div class="scenario-box" style="background:${surplusPos?'var(--green-mid)':'var(--red)'}">
+        <div class="sv">${Number(d.new_budget).toLocaleString()}</div><div class="sl">New Budget (TND)</div>
+      </div>
+      <div class="scenario-box" style="background:${surplusPos?'var(--gold-card)':'var(--red-light)'}">
+        <div class="sv">${surplusPos?'+':''}${Number(d.surplus).toLocaleString()}</div><div class="sl">Surplus / Deficit (TND)</div>
+      </div>
+    </div>
+    ${d.n_at_risk>0 ? `<div class="alert-entry medium"><span class="ae-icon">${surplusPos?'💡':'⚠️'}</span>
+    <div class="ae-txt"><b>${surplusPos?'Opportunity':'Constraint'}:</b> Distribute <b>${Number(d.extra_per_unit).toLocaleString()} TND</b>
+    ${surplusPos?'extra':'reduction'} to each of the <b>${d.n_at_risk}</b> at-risk units.</div></div>` : ''}`;
+}
+
+async function simulateWeather(){
+  const temp = parseFloat(document.getElementById('sim_temp').value)||25;
+  const rain = parseFloat(document.getElementById('sim_rain').value)||0;
+  const wind = parseFloat(document.getElementById('sim_wind').value)||10;
+  const d = await (await fetch('/api/obj/10',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({temp,rain,wind})})).json();
+  const colorMap = {green:'rec-green',red:'rec-red',orange:'rec-orange',yellow:'rec-orange',blue:'rec-blue'};
+  document.getElementById('sim_result').innerHTML =
+    `<div class="recommendation ${colorMap[d.color]||'rec-orange'}">${d.recommendation}</div>`;
+}
+
+checkStatus();
+loadObj(1, document.querySelector('.nav-item'));
+</script>
+</body>
+</html>
